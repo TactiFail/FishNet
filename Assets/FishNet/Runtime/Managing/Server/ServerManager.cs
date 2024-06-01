@@ -609,8 +609,8 @@ namespace FishNet.Managing.Server
                     if (Clients.TryGetValueIL2CPP(id, out NetworkConnection conn))
                     {
                         conn.SetDisconnecting(true);
-                        OnRemoteConnectionState?.Invoke(conn, args);
                         Clients.Remove(id);
+                        OnRemoteConnectionState?.Invoke(conn, args);
                         Objects.ClientDisconnected(conn);
                         BroadcastClientConnectionChange(false, conn);
                         //Return predictedObjectIds.
